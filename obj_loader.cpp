@@ -516,17 +516,19 @@ int main() {
     GLuint shaderProgram = compileShaders();
 
     // Load models into a vector
-    models.push_back(loadModel("test.obj", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(255.0f,0.0f,0.0f), glm::vec3(1.0f), glm::vec3(90.0f, 45.0f, 90.0f)));
-    //models.push_back(loadModel("test.obj", glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(0.0f, 5.0f, 5.0f), glm::vec3(2.0f)));
+    //Example: models.push_back(loadModel("test.obj", glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(255.0f,0.0f,0.0f), glm::vec3(1.0f), glm::vec3(90.0f, 45.0f, 90.0f)));
 
     // Set up projection matrix
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
     // Main loop
+    float lastFrameTime = 0.0f;
     while (!glfwWindowShouldClose(window)) {
         // Process input
-        currentDeltaTime = 0.016f;
-        camera.processKeyboard(0.016f); // Adjust deltaTime as needed
+        float currentTime = glfwGetTime();
+        currentDeltaTime = currentTime - lastFrameTime; // Calculate delta time
+        lastFrameTime = currentTime; // Update last frame time
+        camera.processKeyboard(currentDeltaTime); // Adjust deltaTime as needed
 
         // Clear the buffers
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
