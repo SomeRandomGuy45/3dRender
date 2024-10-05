@@ -1,3 +1,8 @@
-obj_loader
+main
 *.DS_STORE
 .DS_STORE
+*.mtl
+*.obj
+*.exe
+*.png
+/.vscode

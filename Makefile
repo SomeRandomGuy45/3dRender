@@ -1,6 +1,6 @@
 # Define the source and output
-TARGET = obj_loader
-SRC = obj_loader.cpp
+TARGET = main
+SRC = main.cpp
 
 # Platform detection
 UNAME_S := $(shell uname -s)
